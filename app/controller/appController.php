@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use Bramus\Router\Router;
 use App\Model\UsuariosModel;
-use DateTime;
 
 class appController extends baseController {
 
@@ -23,9 +22,8 @@ class appController extends baseController {
 		    $this->renderView('layout/footer');
 
 		});
-		// Login
+		
 		$router->get('/login', function() {
-			// Verifica se  usuario já esta logado. Caso sim redireciona para outra pagina
 			if (isset($_SESSION['authUser']) || !empty($_SESSION['authUser'])) {
 				$this->redirect('');
 			}
@@ -46,9 +44,8 @@ class appController extends baseController {
 				$this->redirect('login');
 			}
 		});
-		// Cadastro
-		$router->get('/cadastrar', function() {
-			// Verifica se  usuario já esta logado. Caso sim redireciona para outra pagina
+		
+		$router->get('/cadastrar', function() {	
 			if (isset($_SESSION['authUser']) || !empty($_SESSION['authUser'])) {
 				$this->redirect('');
 			}
@@ -78,7 +75,7 @@ class appController extends baseController {
 		    }	    
 		});
 
-		// Reset senha
+		
 		$router->get('/reset', function() {
 			unset($_SESSION['emailCodigo']);
 		    $this->renderView('layout/header');
@@ -106,7 +103,7 @@ class appController extends baseController {
 			}
 
 		});
-		// Inserir codigo
+		
 		$router->get('/reset/codigo/{hash}', function($hash) {
 			$user = new UsuariosModel();
 			if($user->verificarCodigo($hash)){
@@ -149,7 +146,7 @@ class appController extends baseController {
 				$this->redirect('reset');
 			}
 		});
-		// Nova Senha
+		
 		$router->get('/novasenha/{url}', function($url) {
 			$user = new UsuariosModel();
 
@@ -181,7 +178,7 @@ class appController extends baseController {
 			}
 
 		});
-		// Logout
+		
 		$router->get('/painel/logout', function() {
 			session_destroy();
 			$this->redirect('');

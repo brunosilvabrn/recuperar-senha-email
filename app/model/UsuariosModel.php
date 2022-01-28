@@ -22,7 +22,7 @@ class UsuariosModel extends baseModel {
 			}else {
 				return false;
 			}
-		}else {
+		}else {	
 			return false;
 		}
 	}
@@ -211,7 +211,7 @@ class UsuariosModel extends baseModel {
 		$receber = $email;
 		$subtitulo = "Código recuperar senha";
 		$body = 'Código: '.$codigo.' ou acesse o link <a href="'.BASE_URL.'reset/codigo/'.$link.'">CLIQUE AQUI</a>';
-		$sender = EMAIL_SISTEMA;
+		$sender = 'from:'.EMAIL_SISTEMA;
 
 		if (mail($receber, $subtitulo, $body, $sender)) {
 			return true;
