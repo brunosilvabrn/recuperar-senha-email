@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\controller;
 
 use Bramus\Router\Router;
-use App\Model\UsuariosModel;
+use App\model\UsuariosModel;
 
-class appController extends baseController {
+class AppController extends BaseController {
 
 	public function app() {
 
@@ -22,7 +22,7 @@ class appController extends baseController {
 		    $this->renderView('layout/footer');
 
 		});
-		
+
 		$router->get('/login', function() {
 			if (isset($_SESSION['authUser']) || !empty($_SESSION['authUser'])) {
 				$this->redirect('');

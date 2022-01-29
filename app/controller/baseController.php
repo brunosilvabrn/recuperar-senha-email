@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\controller;
 
-class baseController {
+class BaseController {
 
 	// função renderizar arquivos da view
 	public function renderView($arquivo) {

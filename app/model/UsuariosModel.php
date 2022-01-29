@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Model;
+namespace App\model;
 
-class UsuariosModel extends baseModel {
+class UsuariosModel extends BaseModel {
 
 	public function login($usuario, $senha){
 
@@ -211,7 +211,7 @@ class UsuariosModel extends baseModel {
 		$receber = $email;
 		$subtitulo = "Código recuperar senha";
 		$body = 'Código: '.$codigo.' ou acesse o link <a href="'.BASE_URL.'reset/codigo/'.$link.'">CLIQUE AQUI</a>';
-		$sender = 'from:'.EMAIL_SISTEMA;
+		$sender = 'from:'.;
 
 		if (mail($receber, $subtitulo, $body, $sender)) {
 			return true;
@@ -219,6 +219,18 @@ class UsuariosModel extends baseModel {
 			return false;
 		}
 
+		
+	    $from = EMAIL_SISTEMA;
+	    $to = $email;
+	    $subject = "Checking PHP mail";
+	    $message = 'Código: '.$codigo.' ou acesse o link <a href="'.BASE_URL.'reset/codigo/'.$link.'">CLIQUE AQUI</a>';
+	    $headers = "From:" . $from;
+
+	    if(mail($to,$subject,$message, $headers)) {
+	    	return true;
+	    }else {
+	    	return false;
+	    }
 	}
 
 } 

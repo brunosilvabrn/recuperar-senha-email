@@ -1,10 +1,10 @@
 <?php 
 
-namespace App\Model;
+namespace App\model;
 
 use PDO;
 
-class baseModel {
+class BaseModel {
 
 	public $host;
 	public $user;
